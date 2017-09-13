@@ -67,4 +67,15 @@ public class NewsLoaderTest {
         spyPublishableNews = newsLoader.loadNews();
         Mockito.verify(spyPublishableNews, Mockito.times(1)).addPublicInfo("Test for test");
     }
+
+    @Test
+    public void checkForAddingSubContent() throws Exception{
+        IncomingNews incomingNews = new IncomingNews();
+        incomingNews.add(new IncomingInfo("Test for test", SubsciptionType.A));
+        Mockito.when(webServiceNewsReader.read()).thenReturn(incomingNews);
+        NewsLoader newsLoader = new NewsLoader();
+        spyPublishableNews = newsLoader.loadNews();
+        Mockito.verify(spyPublishableNews, Mockito.times(1)).addForSubscription("Test for test", SubsciptionType.A);
+
+    }
 }
