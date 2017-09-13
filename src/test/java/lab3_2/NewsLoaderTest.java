@@ -57,4 +57,14 @@ public class NewsLoaderTest {
         assertThat(result.size(), is(equalTo(1)));
         assertThat(result.get(0), is(equalTo("Test for test")));
     }
+
+    @Test
+    public void checkForAddingPublicContent() throws Exception{
+        IncomingNews incomingNews = new IncomingNews();
+        incomingNews.add(new IncomingInfo("Test for test", SubsciptionType.NONE));
+        Mockito.when(webServiceNewsReader.read()).thenReturn(incomingNews);
+        NewsLoader newsLoader = new NewsLoader();
+        spyPublishableNews = newsLoader.loadNews();
+        Mockito.verify(spyPublishableNews, Mockito.times(1)).addPublicInfo("Test for test");
+    }
 }
