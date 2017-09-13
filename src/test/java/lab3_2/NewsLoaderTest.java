@@ -2,7 +2,6 @@ package lab3_2;
 
 import edu.iis.mto.staticmock.reader.WebServiceNewsReader;
 import edu.iis.mto.staticmock.*;
-
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -12,9 +11,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import static org.junit.Assert.*;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
-/**
- * Created by Piotrek on 03.04.2017.
- */
+
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ConfigurationLoader.class, NewsReaderFactory.class})
 public class NewsLoaderTest {
